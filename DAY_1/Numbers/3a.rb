@@ -1,9 +1,9 @@
-# Write a hex to oct converter
+# Write a hexa to octal converter
 
 def hex_to_oct(num)
     decimal = num.hex
     octal_value = decimal.to_s(8)
-    puts octal_value
+    puts "The Ocatal value is #{octal_value}"
 end 
 
 

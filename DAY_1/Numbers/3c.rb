@@ -1,4 +1,4 @@
-#Write a program that will check if a given Integer is prime or not
+#Write a program that will check if a given Integer is Prime or not
 
 def is_prime(n)
     return false if n <= 1
@@ -11,7 +11,8 @@ def is_prime(n)
 end
   
 
-  number = 11
+puts "Enter a Number"
+number = Integer(gets.chomp)
   if is_prime(number)
     puts "#{number} is a prime number"
   else

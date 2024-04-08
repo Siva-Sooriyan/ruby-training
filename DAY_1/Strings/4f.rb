@@ -2,12 +2,10 @@
 
 def sub_string(str)
     n = str.length
-    (0...n).each do |start|
-      (start...n).each do |end_point|
-        (start..end_point).each do |index|
-          print str[index]
-        end
-        puts 
+    (0...n).each do |i|
+      (i...n).each do |j|
+          string = str[i..j]
+          puts string
       end
     end
   end
