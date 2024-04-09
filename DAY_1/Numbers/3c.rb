@@ -10,12 +10,19 @@ def is_prime(n)
     return true
 end
   
-
-puts "Enter a Number"
+begin
+puts "Enter a non-negative number"
 number = Integer(gets.chomp)
+
+raise ArgumentError, "Invalid number, provide a valid number"  unless number.positive?
   if is_prime(number)
     puts "#{number} is a prime number"
   else
     puts "#{number} is not a prime number"
   end
-  
+
+rescue ArgumentError => e
+  puts e.message
+rescue => e
+  puts "An error occured: #{e.message}"
+end

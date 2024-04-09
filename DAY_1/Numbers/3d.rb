@@ -10,10 +10,20 @@ def is_perfect_number(n)
   
     return sum_of_divisors == n
 end
-  
-  number = 1
-  if is_perfect_number(number)
-    puts "#{number} is a perfect number"
-  else
-    puts "#{number} is not a perfect number"
-  end
+
+begin
+puts " Enter a Number to check perfect number or not"
+number = gets.chomp.to_i
+
+raise ArgumentError, "Invalid number" unless number.positive?
+
+if is_perfect_number(number)
+  puts "#{number} is a perfect number"
+else
+  puts "#{number} is not a perfect number"
+end
+rescue ArgumentError => e
+  puts e.message
+rescue => e
+  puts "An error occured: #{e.message}"
+end
