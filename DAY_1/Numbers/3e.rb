@@ -1,21 +1,26 @@
 #Find Remainder without using modulo operator
+class Remainder
+  def self.find_remainder(dividend,divisior)
+   validate_input(dividend,divisior)
+     return (dividend - divisior * (dividend / divisior))
+  end
 
-def find_remainder(dividend,divisior)
-   return (dividend - divisior * (dividend / divisior))
+  private
+
+  def self.validate_input(dividend,divisior)
+   raise ArgumentError, "Invalid number\n" unless dividend.to_i && divisior.to_i
+  end
 end
 
 begin
-  puts "Enter a number for dividend"
-  dividend = gets.chomp.to_i
-  puts "Enter a number of divisor"
-  divisior = gets.chomp.to_i
-
-  raise ArgumentError, "Invalid number" unless dividend.to_i && divisior.to_i
-
-  remainder = find_remainder(dividend,divisior)
-  puts "The remainder of #{dividend} divided by #{divisior} is #{remainder}"
+  STDOUT << "Enter a number for dividend\n"
+  dividend = Integer(STDIN.gets.chomp)
+  STDOUT << "Enter a number of divisor\n"
+  divisior = Integer(STDIN.gets.chomp)
+  remainder = Remainder.find_remainder(dividend,divisior)
+  STDOUT << "The remainder of #{dividend} divided by #{divisior} is #{remainder}\n"
 rescue ArgumentError => e
-   puts e.message
+   STDERR << "#{e.message}\n"
 rescue => e
-   puts "An error occured: #{e.message}"
+   STDERR << "An error occured: #{e.message}\n"
 end

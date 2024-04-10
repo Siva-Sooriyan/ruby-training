@@ -1,22 +1,27 @@
 #Write a octal to hexa converter
+class OctToHexConverter
 
-def oct_to_hex(num)
-  decimal = num.to_i(8)
-  hex_value = decimal.to_s(16)
-  return hex_value
+  def self.convert(num)
+    validate_input(num)
+    decimal = num.to_i(8)
+    hex_value = decimal.to_s(16)
+    return hex_value
+  end
+
+  private
+
+  def self.validate_input(num)
+    raise ArgumentError, "Invalid Octal number" unless num =~ /\A[0-7]+\z/
+  end
 end
 
 begin
-  puts "Enter a octal number to convert to Hexadecimal"
-  num = gets.chomp
-
-  raise ArgumentError, "Invalid Octal number " unless num =~ /\A[0-7]+\z/
-
-  hex_value = oct_to_hex(num)
-  puts "Hexadecimal equivalent of Octal #{num} is #{hex_value}"
-
+  STDOUT << "Enter a octal number to convert to Hexadecimal\n"
+  num = STDIN.gets.chomp
+  result = OctToHexConverter.convert(num)
+  STDOUT << "Hexadecimal equivalent of Octal #{num} is #{result}\n"
 rescue ArgumentError => e
-  puts e.message
+  STDERR << "#{e.message}\n"
 rescue => e
-  puts "An error occured: #{e.message}"
+  STDERR << "An error occured: #{e.message}\n"
 end

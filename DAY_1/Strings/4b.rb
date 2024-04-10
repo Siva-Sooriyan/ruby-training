@@ -1,20 +1,41 @@
 #  b) Check if a sentence is a palindrome
 
-def string_palindrome sentence
+class Palindrome
+  def self.string(sentence)
+    validate_input(sentence)
     sentence = sentence.downcase.gsub(/[^a-z0-9]/, '')
-     palindrome(sentence)    
-end
-def palindrome str
+    palindrome(sentence)    
+  end
+  def self.palindrome(str)
     right = str.length - 1
     left = 0 
-
     while (right > left)
-        return false if str[right] != str[left]
-        right -= right
-        left += left
-    end
-true
+      return false if str[right] != str[left]
+      right -= 1
+      left += 1
+    end 
+    true
+  end
+
+  private 
+
+  def self.validate_input(sentence)
+    raise ArgumentError, "Invalid input, Enter a valid sentence" if sentence.empty?
+  end
 end
 
- sentence = " A man , A plan , A Canal , panama!"
-puts string_palindrome(sentence)
+
+begin 
+   STDOUT << "Enter a sentence\n"
+   sentence = STDIN.gets.chomp
+   result = Palindrome.string(sentence)
+   if result
+    STDOUT << "#{sentence}, This sentence is palindrome\n"
+   else
+    STDOUT << "#{sentence}, This sentence is not palindrome\n"
+   end
+rescue ArgumentError => e
+    STDERR << "#{e.message}\n"
+rescue => e
+    STDERR << "An error occured: #{e.message}\n"
+end

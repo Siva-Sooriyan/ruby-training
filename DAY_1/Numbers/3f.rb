@@ -1,24 +1,31 @@
 #Write a program to print the factorial of a given Integer
-
-def factorial(n)
-  if n < 0
-    raise ArgumentError, "Input must be a non-negative integer"
+class Factorial
+  def self.find_factorial(n)
+    if n < 0
+      validate_input(n)
+    end
+    if n == 0 || n == 1
+      return 1
+    else 
+      return n * find_factorial(n -1)
+    end
   end
-  if n == 0 || n == 1
-    return 1
-  else 
-    return n * factorial(n -1)
+  
+  private
+  
+  def self.validate_input(n)
+    raise ArgumentError, "Input must be a non-negative integer"
   end
 end
 
-# Input with Error handling
+
 begin
-  puts "Enter a non-negative integer to find its factorial:"
-  n = Integer(gets.chomp)
-  answer = factorial(n)
-  puts "Factorial of #{n} is #{answer}"
+  STDOUT << "Enter a non-negative integer to find its factorial\n"
+  n = Integer(STDIN.gets.chomp)
+  answer = Factorial.find_factorial(n)
+  STDOUT << "Factorial of #{n} is #{answer}\n"
 rescue ArgumentError => e
-  puts e.message
+  STDERR << "#{e.message}\n"
 rescue => e
-  puts "An error occurred: #{e.message}"
+  STDERR << "An error occurred: #{e.message}\n"
 end
