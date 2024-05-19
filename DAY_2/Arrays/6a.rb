@@ -110,7 +110,7 @@ begin
   input_values = input_value.split(',')
   fde = UniqueElements.new
   fde.set_inputs_from_csv(input_values)
-  # pp fde.inputs
+  pp fde.inputs
   fde.find_distinct_elements
   # Zero exit value indicates a normal state in Linux/Unix-like OS-es
   exit 0
