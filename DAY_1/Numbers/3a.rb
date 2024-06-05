@@ -4,7 +4,7 @@
 # Abstract
 # Exercise 3a: Write a hex to oct converter
 # Ref: Not available
-# In this exercise, we have to convert a hexadecimal number to octal devimal number
+# In this exercise, we have to convert a hexadecimal number to octal decimal number
 # ########################################################################## #
 
 # ########################################################################## #
@@ -68,7 +68,7 @@ class HexToOctConverter
 
   def convert_hex_to_oct
     logr "-- ----------------------------------------------------------------"
-    logr "-- Starting find_distinct_elements('#{@input}')"
+    logr "-- Starting convert_hex_to_oct('#{@input}')"
     # Converting hexadecimal value to octal value
     logr "-- Converting Hexadecimal value to Octal Value"
     # Converting hexadecimal value to decimal value
@@ -79,7 +79,6 @@ class HexToOctConverter
     logr "-- Octal value of the given hexadecimal value is #{@output}"
     logr "-- Finished convert_hex_to_oct"
     logr "-- ----------------------------------------------------------------"
-
   end
 end
 
